@@ -26,7 +26,7 @@
 
 #include "display/display.h"
 #include "display/gc9a01.h"
-#include "display/lvgl_demo_ui.h"
+
 #include "display/ui_helpers.h"
 
 #include "wireless/sntp.h"
@@ -225,19 +225,19 @@ static void mqtt_msg_pars_task(void* param)
 			switch (mqttBuffer.eventType)
 			{
 				case MQTT_BROKER_CONNECT:
-					_ui_text_wifiIndicate(true);
+
 
 					mqtt_publish(MQTT_REQUEST_TOPIC, &publishRequest, 1);
 					break;
 				case MQTT_BROKER_DISCONNECT:
-					_ui_text_wifiIndicate(false);
+
 					break;
 				case MQTT_TOPIC_DATA_RX:
 
 
 					main_tempretureStringPrepare(mqttBuffer.data, targetString);
 
-					_ui_temp_set(targetString);
+
 
 					break;
 				default:
@@ -268,13 +268,11 @@ static void time_handle_task(void* param)
 
 		sprintf(tempString,"%02d",Time.tm_hour);
 
-		realTime.sel.hour = (tempString[1] << 8);
-		realTime.sel.hour |= (tempString[0]);
+
 
 		sprintf(tempString,"%02d",Time.tm_min);
 
-		realTime.sel.minute = (tempString[1] << 8);
-		realTime.sel.minute |= (tempString[0]);
+
 
 		++tempUpdateCounter;
 

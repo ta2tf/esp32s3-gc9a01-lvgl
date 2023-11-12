@@ -16,7 +16,7 @@
 
 /* INCLUDES ------------------------------------------------------------------*/
 #include "display.h"
-
+#include "ui.h"
 
 /* PRIVATE STRUCTRES ---------------------------------------------------------*/
 
@@ -27,7 +27,7 @@ lv_disp_drv_t disp_drv;  // contains callback functions
 /* MACROS --------------------------------------------------------------------*/
 static const char *TAG = "example";
 /* PRIVATE FUNCTIONS DECLARATION ---------------------------------------------*/
-extern void example_lvgl_demo_ui(lv_disp_t *disp);
+
 /* FUNCTION PROTOTYPES -------------------------------------------------------*/
 
 
@@ -119,6 +119,15 @@ void displayConfig(void)
     disp_drv.user_data = panel_handle;
     lv_disp_t *disp = lv_disp_drv_register(&disp_drv);
 
+    static lv_indev_drv_t indev_drv; // Input device driver (Touch)
+    lv_indev_drv_init(&indev_drv);
+    indev_drv.type = LV_INDEV_TYPE_POINTER;
+    indev_drv.disp = disp;
+
+
+    lv_indev_drv_register(&indev_drv);
+
+
     ESP_LOGI(TAG, "Install LVGL tick timer");
     // Tick interface for LVGL (using esp_timer to generate 2ms periodic event)
     const esp_timer_create_args_t lvgl_tick_timer_args = {
@@ -131,7 +140,7 @@ void displayConfig(void)
 
 
     ESP_LOGI(TAG, "Display LVGL Meter Widget");
-    example_lvgl_demo_ui(disp);
+    ui_init();
 
 }
 /*************************************** USEFUL ELECTRONICS*****END OF FILE****/
