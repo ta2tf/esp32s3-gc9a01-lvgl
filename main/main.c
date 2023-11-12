@@ -140,12 +140,12 @@ void lvgl_time_task(void* param)
 //        //Used with smart watch
 //        _ui_arc_increment();
 
-        button_manager();
-
-        if(xQueueReceive(system_queue, (void * )&system_buffer, 2))
-        {
-        	_ui_radar(system_buffer.data[1], system_buffer.data[0]);
-        }
+//        button_manager();
+//
+//        if(xQueueReceive(system_queue, (void * )&system_buffer, 2))
+//        {
+//        	_ui_radar(system_buffer.data[1], system_buffer.data[0]);
+//        }
 
 
 
