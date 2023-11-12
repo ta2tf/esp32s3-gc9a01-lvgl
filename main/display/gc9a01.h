@@ -34,7 +34,7 @@
 #include "esp_log.h"
 /* MACROS --------------------------------------------------------------------*/
 // Using SPI2 in the example
-#define LCD_HOST  SPI2_HOST
+#define LCD_HOST  SPI3_HOST
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// Please update the following configuration according to your LCD spec //////////////////////////////
@@ -42,14 +42,14 @@
 #define EXAMPLE_LCD_PIXEL_CLOCK_HZ     (20 * 1000 * 1000)
 #define EXAMPLE_LCD_BK_LIGHT_ON_LEVEL  1
 #define EXAMPLE_LCD_BK_LIGHT_OFF_LEVEL !EXAMPLE_LCD_BK_LIGHT_ON_LEVEL
-#define EXAMPLE_PIN_NUM_SCLK           4//18
-#define EXAMPLE_PIN_NUM_MOSI           5//19
-#define EXAMPLE_PIN_NUM_MISO           16//21
-#define EXAMPLE_PIN_NUM_LCD_DC         6//5
-#define EXAMPLE_PIN_NUM_LCD_RST        15//3
-#define EXAMPLE_PIN_NUM_LCD_CS         7//4
-#define EXAMPLE_PIN_NUM_BK_LIGHT       18//2
-#define EXAMPLE_PIN_NUM_TOUCH_CS       17//15
+#define EXAMPLE_PIN_NUM_SCLK           3    //18
+#define EXAMPLE_PIN_NUM_MOSI           2    //19
+#define EXAMPLE_PIN_NUM_MISO           7    //21
+#define EXAMPLE_PIN_NUM_LCD_DC         6    //5
+#define EXAMPLE_PIN_NUM_LCD_RST        1    //3
+#define EXAMPLE_PIN_NUM_LCD_CS         5    //4
+#define EXAMPLE_PIN_NUM_BK_LIGHT       10   //2
+#define EXAMPLE_PIN_NUM_TOUCH_CS       17   //15
 
 #define EXAMPLE_LCD_H_RES              240
 #define EXAMPLE_LCD_V_RES              240
