@@ -34,13 +34,13 @@
 #include "esp_log.h"
 /* MACROS --------------------------------------------------------------------*/
 // Using SPI2 in the example
-#define LCD_HOST  SPI3_HOST
+#define LCD_HOST  SPI2_HOST
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// Please update the following configuration according to your LCD spec //////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define EXAMPLE_LCD_PIXEL_CLOCK_HZ     (20 * 1000 * 1000)
-#define EXAMPLE_LCD_BK_LIGHT_ON_LEVEL  1
+#define EXAMPLE_LCD_BK_LIGHT_ON_LEVEL  0
 #define EXAMPLE_LCD_BK_LIGHT_OFF_LEVEL !EXAMPLE_LCD_BK_LIGHT_ON_LEVEL
 #define EXAMPLE_PIN_NUM_SCLK           3    //18
 #define EXAMPLE_PIN_NUM_MOSI           2    //19
@@ -51,8 +51,8 @@
 #define EXAMPLE_PIN_NUM_BK_LIGHT       10   //2
 #define EXAMPLE_PIN_NUM_TOUCH_CS       17   //15
 
-#define EXAMPLE_LCD_H_RES              240
-#define EXAMPLE_LCD_V_RES              240
+#define EXAMPLE_LCD_H_RES              128
+#define EXAMPLE_LCD_V_RES              128
 
 #define EXAMPLE_LCD_CMD_BITS           8
 #define EXAMPLE_LCD_PARAM_BITS         8
