@@ -150,9 +150,9 @@ void lvgl_time_task(void* param)
 
 
         // raise the task priority of LVGL and/or reduce the handler period can improve the performance
-//        vTaskDelay(pdMS_TO_TICKS(10));
+        vTaskDelay(pdMS_TO_TICKS(100));
 
-        vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(10) );
+//        vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(10) );
 
 	}
 }
