@@ -1,18 +1,3 @@
-/**
- ******************************************************************************
- *							USEFUL ELECTRONICS
- ******************************************************************************/
-/**
- ******************************************************************************
- * @file    :  gc9a01.h
- * @author  :  WARD ALMASARANI
- * @version :  v.1.0
- * @date    :  Jan 31, 2023
- * @link    :  https://www.youtube.com/@usefulelectronics
- *			   Hold Ctrl button and click on the link to be directed to
-			   Useful Electronics YouTube channel	
- ******************************************************************************/
-
 #ifndef MAIN_GC9A01_H_
 #define MAIN_GC9A01_H_
 
@@ -39,12 +24,12 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////// Please update the following configuration according to your LCD spec //////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define EXAMPLE_LCD_PIXEL_CLOCK_HZ     (20 * 1000 * 1000)
+#define EXAMPLE_LCD_PIXEL_CLOCK_HZ     (40 * 1000 * 1000)
 #define EXAMPLE_LCD_BK_LIGHT_ON_LEVEL  0
 #define EXAMPLE_LCD_BK_LIGHT_OFF_LEVEL !EXAMPLE_LCD_BK_LIGHT_ON_LEVEL
 #define EXAMPLE_PIN_NUM_SCLK           3    //18
 #define EXAMPLE_PIN_NUM_MOSI           2    //19
-#define EXAMPLE_PIN_NUM_MISO           7    //21
+#define EXAMPLE_PIN_NUM_MISO          -1    //21
 #define EXAMPLE_PIN_NUM_LCD_DC         6    //5
 #define EXAMPLE_PIN_NUM_LCD_RST        1    //3
 #define EXAMPLE_PIN_NUM_LCD_CS         5    //4
@@ -70,5 +55,3 @@ void gc9a01_displayInit(void);
 
 
 #endif /* MAIN_GC9A01_H_ */
-
-/*************************************** USEFUL ELECTRONICS*****END OF FILE****/

@@ -1,18 +1,3 @@
-/**
- ******************************************************************************
- *							USEFUL ELECTRONICS
- ******************************************************************************/
-/**
- ******************************************************************************
- * @file    :  gc9a01.c
- * @author  :  WARD ALMASARANI
- * @version :  v.1.0
- * @date    :  Jan 31, 2023
- * @link    :  https://www.youtube.com/@usefulelectronics
- *			   Hold Ctrl button and click on the link to be directed to
-			   Useful Electronics YouTube channel	
- ******************************************************************************/
-
 
 /* INCLUDES ------------------------------------------------------------------*/
 #include "gc9a01.h"
@@ -72,8 +57,6 @@ void gc9a01_displayInit(void)
     esp_lcd_panel_dev_config_t panel_config = {
         .reset_gpio_num = EXAMPLE_PIN_NUM_LCD_RST,
 
-        .rgb_endian = LCD_RGB_ENDIAN_RGB,
-
         .rgb_endian = LCD_RGB_ENDIAN_BGR,
 
         .bits_per_pixel = 16,
@@ -99,5 +82,3 @@ void gc9a01_displayInit(void)
 
 
 }
-
-/*************************************** USEFUL ELECTRONICS*****END OF FILE****/

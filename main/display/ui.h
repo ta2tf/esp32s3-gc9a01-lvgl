@@ -17,11 +17,11 @@ extern "C" {
 // SCREEN: ui_Screen1
 void ui_Screen1_screen_init(void);
 extern lv_obj_t *ui_Screen1;
-extern lv_obj_t *ui_Button1;
-extern lv_obj_t *ui_Label1;
 extern lv_obj_t *ui_Image1;
+extern lv_obj_t *ui_Spinner2;
 extern lv_obj_t *ui____initial_actions0;
 
+LV_IMG_DECLARE( ui_img_wifi3_png);   // assets\wifi3.png
 LV_IMG_DECLARE( ui_img_autos_png);   // assets\autos.png
 
 

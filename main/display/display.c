@@ -1,18 +1,3 @@
-/**
- ******************************************************************************
- *							USEFUL ELECTRONICS
- ******************************************************************************/
-/**
- ******************************************************************************
- * @file    :  display.c
- * @author  :  WARD ALMASARANI
- * @version :  v.1.0
- * @date    :  Feb 1, 2023
- * @link    :  https://www.youtube.com/@usefulelectronics
- *			   Hold Ctrl button and click on the link to be directed to
-			   Useful Electronics YouTube channel	
- ******************************************************************************/
-
 
 /* INCLUDES ------------------------------------------------------------------*/
 #include "display.h"
@@ -45,6 +30,9 @@ static void example_lvgl_flush_cb(lv_disp_drv_t *drv, const lv_area_t *area, lv_
     int offsetx2 = area->x2;
     int offsety1 = area->y1;
     int offsety2 = area->y2;
+
+
+
     // copy a buffer's content to a specific area of the display
     esp_lcd_panel_draw_bitmap(panel_handle, offsetx1, offsety1, offsetx2 + 1, offsety2 + 1, color_map);
 }
@@ -54,9 +42,12 @@ static void example_lvgl_port_update_callback(lv_disp_drv_t *drv)
 {
     esp_lcd_panel_handle_t panel_handle = (esp_lcd_panel_handle_t) drv->user_data;
 
+    ESP_LOGI(TAG, "Rotation : %d",drv->rotated);
+
     switch (drv->rotated) {
     case LV_DISP_ROT_NONE:
         // Rotate LCD display
+
         esp_lcd_panel_swap_xy(panel_handle, false);
         esp_lcd_panel_mirror(panel_handle, true, false);
 
@@ -87,15 +78,13 @@ static void example_lvgl_port_update_callback(lv_disp_drv_t *drv)
 static void example_increase_lvgl_tick(void *arg)
 {
     /* Tell LVGL how many milliseconds has elapsed */
-    lv_tick_inc(EXAMPLE_LVGL_TICK_PERIOD_MS);
+     lv_tick_inc(EXAMPLE_LVGL_TICK_PERIOD_MS);
 }
 
 
 void displayConfig(void)
 {
     static lv_disp_draw_buf_t disp_buf; // contains internal graphic buffer(s) called draw buffer(s)
-
-
 
 
     ESP_LOGI(TAG, "Initialize LVGL library");
@@ -113,16 +102,20 @@ void displayConfig(void)
     lv_disp_drv_init(&disp_drv);
     disp_drv.hor_res = EXAMPLE_LCD_H_RES;
     disp_drv.ver_res = EXAMPLE_LCD_V_RES;
+
+
     disp_drv.flush_cb = example_lvgl_flush_cb;
     disp_drv.drv_update_cb = example_lvgl_port_update_callback;
     disp_drv.draw_buf = &disp_buf;
     disp_drv.user_data = panel_handle;
     lv_disp_t *disp = lv_disp_drv_register(&disp_drv);
 
-    static lv_indev_drv_t indev_drv; // Input device driver (Touch)
+    static lv_indev_drv_t indev_drv;                     // Input device driver (Touch)
     lv_indev_drv_init(&indev_drv);
     indev_drv.type = LV_INDEV_TYPE_POINTER;
     indev_drv.disp = disp;
+
+    esp_lcd_panel_swap_xy(panel_handle, true);
 
 
     lv_indev_drv_register(&indev_drv);
@@ -134,13 +127,14 @@ void displayConfig(void)
         .callback = &example_increase_lvgl_tick,
         .name = "lvgl_tick"
     };
+
+
     esp_timer_handle_t lvgl_tick_timer = NULL;
     ESP_ERROR_CHECK(esp_timer_create(&lvgl_tick_timer_args, &lvgl_tick_timer));
     ESP_ERROR_CHECK(esp_timer_start_periodic(lvgl_tick_timer, EXAMPLE_LVGL_TICK_PERIOD_MS * 1000));
 
 
-    ESP_LOGI(TAG, "Display LVGL Meter Widget");
+    ESP_LOGI(TAG, "Display LVGL");
     ui_init();
 
 }
-/*************************************** USEFUL ELECTRONICS*****END OF FILE****/
