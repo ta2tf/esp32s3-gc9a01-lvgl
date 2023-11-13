@@ -2,10 +2,8 @@
 
 /* INCLUDES ------------------------------------------------------------------*/
 #include "main.h"
-
 #include "display/display.h"
 #include "display/gc9a01.h"
-#include "display/ui_helpers.h"
 #include "esp_log.h"
 
 

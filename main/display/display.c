@@ -1,19 +1,11 @@
 
 /* INCLUDES ------------------------------------------------------------------*/
 #include "display.h"
-#include "ui.h"
+#include "ui/ui.h"
 
-/* PRIVATE STRUCTRES ---------------------------------------------------------*/
-
-/* VARIABLES -----------------------------------------------------------------*/
 lv_disp_drv_t disp_drv;  // contains callback functions
-/* DEFINITIONS ---------------------------------------------------------------*/
 
-/* MACROS --------------------------------------------------------------------*/
 static const char *TAG = "example";
-/* PRIVATE FUNCTIONS DECLARATION ---------------------------------------------*/
-
-/* FUNCTION PROTOTYPES -------------------------------------------------------*/
 
 
 bool display_notify_lvgl_flush_ready(esp_lcd_panel_io_handle_t panel_io, esp_lcd_panel_io_event_data_t *edata, void *user_ctx)
@@ -30,8 +22,6 @@ static void example_lvgl_flush_cb(lv_disp_drv_t *drv, const lv_area_t *area, lv_
     int offsetx2 = area->x2;
     int offsety1 = area->y1;
     int offsety2 = area->y2;
-
-
 
     // copy a buffer's content to a specific area of the display
     esp_lcd_panel_draw_bitmap(panel_handle, offsetx1, offsety1, offsetx2 + 1, offsety2 + 1, color_map);
@@ -110,7 +100,7 @@ void displayConfig(void)
     disp_drv.user_data = panel_handle;
     lv_disp_t *disp = lv_disp_drv_register(&disp_drv);
 
-    static lv_indev_drv_t indev_drv;                     // Input device driver (Touch)
+    static lv_indev_drv_t indev_drv;
     lv_indev_drv_init(&indev_drv);
     indev_drv.type = LV_INDEV_TYPE_POINTER;
     indev_drv.disp = disp;
